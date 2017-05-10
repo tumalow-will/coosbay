@@ -4,12 +4,13 @@ from logging.handlers import TimedRotatingFileHandler
 import json_formatter
 
 
-def start(filename=None, level=logging.DEBUG):
+def start(name, level=logging.DEBUG, filepath=None):
     logger = logging.getLogger()
-    if filename is None:
+    if filepath is None:
         pth = os.path.split(os.path.realpath(__file__))
-        filename = os.path.join(pth[0], 'logs', pth[1]+'.log')
+        filepath = os.path.join(pth[0], 'logs')
 
+    filename = os.path.join(filepath, name+'.log')
     screen_handler = logging.StreamHandler()
     file_handler = TimedRotatingFileHandler(
                     filename=filename,
