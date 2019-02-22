@@ -3,6 +3,10 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import json_formatter
 
+__location__ = os.path.split(os.path.realpath(__file__))[0]
+
+with open(os.path.join(__location__, '__version__')) as f:
+    __version__ = f.read().strip()
 
 def start(name, level=logging.DEBUG, filepath=None):
     logger = logging.getLogger()
