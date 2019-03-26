@@ -7,6 +7,8 @@ class MustGivePackageName(Exception):
     pass
 
 modules = os.listdir(os.path.join(here, 'src'))
+modules = [mod for mod in modules if not mod.endswith('.egg-info')]
+
 if len(modules) > 1:
     raise MustGivePackageName('You have multiple folders in src/.  '
                     'Add the package name manually to the setup.py')
@@ -47,7 +49,7 @@ def pull_repo_name_from_url(url):
     repo, egg = repo_with_egg.split('#')
     assert repo.endswith('.git')
     repo = repo[:-4]
-    return "tumalow.{0}".format(repo)
+    return repo
 
 def get_dependency(req):
     """
