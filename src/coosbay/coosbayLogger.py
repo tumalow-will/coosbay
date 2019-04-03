@@ -11,7 +11,9 @@ class coosbayLogger(object) :
   def __init__(self, logger_name   = 'srvrAlert',
                      log_level     = 'DEBUG',
                      log_dir       = None,
-                     logfile_name  = None
+                     logfile_name  = None,
+                     MaxLogFileSizeInBytes   = int(5*10**6),
+                     MaxNumberOfLogsToRetain = 200
                ) :
       '''
       logger_name : could be used in the message format, if more than 1
@@ -40,8 +42,8 @@ class coosbayLogger(object) :
       ##  Rotating handler parameters
       #MaxLogFileSizeInBytes   = int(5*10**6)
       #MaxNumberOfLogsToRetain = 200
-      MaxLogFileSizeInBytes   = 5000
-      MaxNumberOfLogsToRetain =    3
+      #MaxLogFileSizeInBytes   = 5000
+      #MaxNumberOfLogsToRetain =    3
 
       ##  Log levels
       self.log_levels = {
@@ -88,7 +90,7 @@ class coosbayLogger(object) :
       #logging.basicConfig(filename=logging.full_log_name, level=logging.DEBUG)
       print 'FULL-LOG-NAME', self.full_log_name
 
-      self.logger         = logging.getLogger(self.logger_name)
+      self.logger        = logging.getLogger(self.logger_name)
       ## Simple file_handler
       #self.file_handler   = logging.FileHandler(self.full_log_name)
       ## Let's try the RotatingFileHandler:
@@ -114,7 +116,7 @@ class coosbayLogger(object) :
       self.datapkt_l.append(self.df_h(self.datapkt_l[0]))
       msg = {'data' : self.datapkt_l, 'pkt': 'STATUS'}
       #msg = self.df_h(msg)
-      self.warn(msg)
+      self.info(msg)
   ## --------------------------------- ##
 
   def get_logger(self) :
