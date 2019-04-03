@@ -3,3 +3,4 @@
 *.log.2*
 management/manage_these_logs
 **/logs/*
+**/tumalow*\.egg-info
