@@ -8,7 +8,7 @@ import                 subprocess
 
 
 class coosbayLogger(object) :
-  def __init__(self, logger_name   = 'srvrAlert',
+  def __init__(self, logger_name   = '__main__',
                      log_level     = 'DEBUG',
                      log_dir       = None,
                      logfile_name  = None,
@@ -16,19 +16,44 @@ class coosbayLogger(object) :
                      MaxNumberOfLogsToRetain = 200
                ) :
       '''
-      logger_name : could be used in the message format, if more than 1
-                    application used this same log file
-      log_level   : handlers will be initialized to this logging level 
+      logger_name : From the "The logger name hierarchy is analogous to the Python
+                    package hierarchy, and identical to it if you organise your
+                    loggers on a per-module basis using the recommended construction
+                        logging.getLogger(__name__)
+                    But any alphameric string of python-allowed chars is allowed;
+                    e.g.  SolomonGrundy" or "JamesJarrett"
+        Sunday, Oct. 15, 2017, 48-year old James Harold Jarrett
+                    arrested [for illegal camping] on Oregon State Parole
+                    Board warrant charging Parole Violation on original
+                    charge of Burglary. (Coos Bay Police Dept report)
+        Wednesday, April 18, 2018.  49-year-old James Jarrett died in a
+                    logging accident on Monday. (local Fox News)
+        Saturday, May 5, 2018.  James Harold Jarrett
+                    JANUARY 21, 1969 ~ APRIL 16, 2018
+                    A funeral service will be held for James
+                    “Jim” H. Jarrett, 49, of Coos Bay... In 1993 he married
+                    his high school sweetheart, Sheila Johnson. They were married
+                    for 11 years. Together they had two children, Brady and Mariah.
+                    Jim never remarried...Jim loved golf. (Coos Bay funeral notices)
+      log_level   : handlers will be initialized to this logging level
       log_dir     : the directory into which the log files will be written.
+                    If specified, that exact path will be used
                     default: ...coosbay/logs/directory_name-of-application.
-                    if specified, that exact path will be used
       logfile_name: the name of the logile.
                     default: log_dir/directory_name-of-application.log
+      MaxLogFileSizeInBytes : RotatingFileHandler parameter;  when logfile
+                    reaches approximately this size an automatic roll-over will
+                    take place.
+                    default:  int(5*10**6),
+      MaxNumberOfLogsToRetain : RotatingFileHandler parameter; once there are
+                    this many logfiles in log_dir, at the the nextroll-over the
+                    oldest logfile will be removed.
+                    default: 200
 
       Examples.  Assume application resides in directory snafu
         coosbayLogger()  will write the logs in .../coosbay/logs/snafu/snafu.log
 
-        coosbayLogger(logfile_name='George') will write logs to 
+        coosbayLogger(logfile_name='George') will write logs to
         .../coosbay/logs/snafu/George.log
 
         coosbayLogger(logfile_name='Prescott', log_dir='Samuel') will place
@@ -39,11 +64,6 @@ class coosbayLogger(object) :
 
       ##  The directory already exists
       FileExistsErrno         = 13
-      ##  Rotating handler parameters
-      #MaxLogFileSizeInBytes   = int(5*10**6)
-      #MaxNumberOfLogsToRetain = 200
-      #MaxLogFileSizeInBytes   = 5000
-      #MaxNumberOfLogsToRetain =    3
 
       ##  Log levels
       self.log_levels = {
