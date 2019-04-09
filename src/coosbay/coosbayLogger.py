@@ -9,7 +9,7 @@ import                 subprocess
 
 class coosbayLogger(object) :
   def __init__(self, logger_name   = '__main__',
-                     log_level     = 'DEBUG',
+                     log_level     = 'INFO',
                      log_dir       = None,
                      logfile_name  = None,
                      MaxLogFileSizeInBytes   = int(5*10**6),
@@ -22,16 +22,16 @@ class coosbayLogger(object) :
                         logging.getLogger(__name__)
                     But any alphameric string of python-allowed chars is allowed;
                     e.g.  SolomonGrundy" or "JamesJarrett"
-        Sunday, Oct. 15, 2017, 48-year old James Harold Jarrett
-                    arrested [for illegal camping] on Oregon State Parole
-                    Board warrant charging Parole Violation on original
+        Sunday, Oct. 15, 2017, 48-year old James Harold Jarrett was
+                    arrested [for illegal camping] on an Oregon State Parole
+                    Board warrant, charged with Parole Violation, on the original
                     charge of Burglary. (Coos Bay Police Dept report)
         Wednesday, April 18, 2018.  49-year-old James Jarrett died in a
                     logging accident on Monday. (local Fox News)
         Saturday, May 5, 2018.  James Harold Jarrett
                     JANUARY 21, 1969 ~ APRIL 16, 2018
                     A funeral service will be held for James
-                    “Jim” H. Jarrett, 49, of Coos Bay... In 1993 he married
+                    "Jim" H. Jarrett, 49, of Coos Bay... In 1993 he married
                     his high school sweetheart, Sheila Johnson. They were married
                     for 11 years. Together they had two children, Brady and Mariah.
                     Jim never remarried...Jim loved golf. (Coos Bay funeral notices)
