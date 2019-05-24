@@ -24,7 +24,7 @@ def start(name, level=logging.DEBUG, filepath=None, handlerkw=None):
                     )
     handlerkw = {} if handlerkw is None else handlerkw
 
-    pass_to_handler.update(handkerkw)
+    pass_to_handler.update(handlerkw)
 
     file_handler = RotatingFileHandler(**pass_to_handler)
 
