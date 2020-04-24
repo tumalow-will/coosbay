@@ -1,7 +1,7 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-import json_formatter
+import coosbay.json_formatter as json_formatter
 
 __location__ = os.path.split(os.path.realpath(__file__))[0]
 
