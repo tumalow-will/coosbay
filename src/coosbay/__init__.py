@@ -28,7 +28,7 @@ def start(name, level=logging.DEBUG, filepath=None, handlerkw=None):
     file_handler = RotatingFileHandler(**pass_to_handler)
 
     formatter = logging.Formatter(
-            fmt='%(levelname)s - %(module)s - %(funcName) - %(lineno)')
+            fmt='%(levelname)s - %(module)s - %(funcName)s - %(lineno)s - %(message)s')
     screen_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
     logger.addHandler(screen_handler)
