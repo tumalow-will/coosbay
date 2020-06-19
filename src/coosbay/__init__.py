@@ -1,7 +1,6 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-import coosbay.json_formatter as json_formatter
 
 __location__ = os.path.split(os.path.realpath(__file__))[0]
 
@@ -28,8 +27,8 @@ def start(name, level=logging.DEBUG, filepath=None, handlerkw=None):
 
     file_handler = RotatingFileHandler(**pass_to_handler)
 
-    formatter = json_formatter.JSONFormatter(
-                ['levelname','module', 'funcName', 'lineno'])
+    formatter = logging.Formatter(
+            fmt='%(levelname)s - %(module)s - %(funcName) - %(lineno)')
     screen_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
     logger.addHandler(screen_handler)
